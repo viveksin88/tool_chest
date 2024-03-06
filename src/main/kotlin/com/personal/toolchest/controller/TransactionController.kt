@@ -19,8 +19,8 @@ class TransactionController {
     private lateinit var transactionServiceImpl: TransactionServiceImpl
 
     @GetMapping("/transactions")
-    fun getTransactions(): String {
-        return "Hello World";
+    fun getTransactions(): List<TransactionDTO> {
+        return transactionServiceImpl.getTransactions()
     }
 
     @PostMapping("/transaction")

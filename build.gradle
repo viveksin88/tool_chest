@@ -6,6 +6,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'org.jetbrains.kotlin.jvm' version '1.6.21'
 	id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
+	id "org.jetbrains.kotlin.plugin.jpa" version "2.0.0-Beta4"
 }
 
 group = 'com.personal'

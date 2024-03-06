@@ -4,6 +4,5 @@ import com.personal.toolchest.model.TransactionDTO
 
 interface TransactionService {
     fun createTransaction(transaction: TransactionDTO)
-    fun getTransaction(transactionId: Int)
-    fun getTransactions()
+    fun getTransactions(): List<TransactionDTO>
 }

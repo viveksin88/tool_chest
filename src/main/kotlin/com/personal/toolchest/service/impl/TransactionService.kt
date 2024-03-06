@@ -6,6 +6,7 @@ import com.personal.toolchest.repository.TransactionRepository
 import com.personal.toolchest.service.TransactionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import kotlin.streams.toList
 
 @Service
 class TransactionServiceImpl: TransactionService {
@@ -19,11 +20,9 @@ class TransactionServiceImpl: TransactionService {
         transactionRepository.save(transactionEntity)
     }
 
-    override fun getTransaction(transactionId: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getTransactions() {
-        TODO("Not yet implemented")
+    override fun getTransactions(): List<TransactionDTO> {
+        val transactions = transactionRepository.findAll();
+        return transactions.stream()
+            .map { transaction -> TransactionDTO(transaction.name, transaction.amount, transaction.transactionType) }.toList()
     }
 }
