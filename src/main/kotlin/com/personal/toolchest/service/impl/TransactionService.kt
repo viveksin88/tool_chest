@@ -20,9 +20,13 @@ class TransactionServiceImpl: TransactionService {
         transactionRepository.save(transactionEntity)
     }
 
-    override fun getTransactions(): List<TransactionDTO> {
-        val transactions = transactionRepository.findAll();
+    override fun getTransactions(deleted: Boolean): List<TransactionDTO> {
+        val transactions = transactionRepository.findAllByStatus(deleted)
         return transactions.stream()
             .map { transaction -> TransactionDTO(transaction.name, transaction.amount, transaction.transactionType) }.toList()
+    }
+
+    override fun deleteTransaction(transactionId: Int) {
+        transactionRepository.deleteById(transactionId)
     }
 }

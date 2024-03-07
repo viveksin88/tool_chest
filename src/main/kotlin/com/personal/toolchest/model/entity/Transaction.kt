@@ -15,6 +15,7 @@ class Transaction(
     @Column var amount: BigDecimal,
     @Enumerated(EnumType.STRING) var transactionType: TransactionType,
     @Column var createdOn: Timestamp = Timestamp(System.currentTimeMillis()),
-    @Column var modifiedOn: Timestamp = Timestamp(System.currentTimeMillis())
+    @Column var modifiedOn: Timestamp = Timestamp(System.currentTimeMillis()),
+    @Column var deleted: Boolean = false
 ) {
 }
