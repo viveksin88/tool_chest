@@ -6,6 +6,6 @@ import java.math.BigDecimal
 data class TransactionDTO(
     var name: String,
     var amount: BigDecimal,
-    var transactionTypeEnum: TransactionTypeEnum
+    var transactionType: TransactionTypeEnum
 ) {
 }

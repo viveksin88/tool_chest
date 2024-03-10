@@ -16,12 +16,15 @@ class TransactionTypeServiceImpl: TransactionTypeService {
     private lateinit var transactionTypeRepository: TransactionTypeRepository
 
     override fun addTransactionType(transactionTypeDTO: TransactionTypeDTO) {
-        val transactionType: TransactionType = TransactionType(transactionType = transactionTypeDTO.transactionType, allowedLimit = transactionTypeDTO.allowedLimit, remainingBalance = transactionTypeDTO.remainingBalance)
+        val transactionType = TransactionType(transactionType = transactionTypeDTO.transactionType, allowedLimit = transactionTypeDTO.allowedLimit, remainingBalance = transactionTypeDTO.remainingBalance)
         transactionTypeRepository.save(transactionType)
     }
 
     override fun updateBalance(transactionTypeEnum: TransactionTypeEnum, newBalance: BigDecimal) {
-        TODO("Not yet implemented")
+        val transactionType =
+            transactionTypeRepository.findByTransactionType(transactionType = transactionTypeEnum)
+        transactionType.remainingBalance = newBalance
+        transactionTypeRepository.save(transactionType)
     }
 
     override fun getCurrentBalance(transactionTypeEnum: TransactionTypeEnum): BigDecimal {
