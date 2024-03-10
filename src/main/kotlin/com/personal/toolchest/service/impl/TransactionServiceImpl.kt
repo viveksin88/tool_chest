@@ -1,6 +1,6 @@
 package com.personal.toolchest.service.impl
 
-import com.personal.toolchest.model.TransactionDTO
+import com.personal.toolchest.dto.TransactionDTO
 import com.personal.toolchest.model.entity.Transaction
 import com.personal.toolchest.repository.TransactionRepository
 import com.personal.toolchest.service.TransactionService
@@ -16,7 +16,7 @@ class TransactionServiceImpl: TransactionService {
 
     override fun createTransaction(transaction: TransactionDTO) {
         val transactionEntity = Transaction(
-            name = transaction.name, amount = transaction.amount, transactionType = transaction.transactionType)
+            name = transaction.name, amount = transaction.amount, transactionType = transaction.transactionTypeEnum)
         transactionRepository.save(transactionEntity)
     }
 
@@ -28,5 +28,9 @@ class TransactionServiceImpl: TransactionService {
 
     override fun deleteTransaction(transactionId: Int) {
         transactionRepository.deleteById(transactionId)
+    }
+
+    override fun getMonthlySpent() {
+
     }
 }
